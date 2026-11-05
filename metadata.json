@@ -1,0 +1,6 @@
+{
+  "name": "Apex Physics — Projectile Motion Exam",
+  "description": "Minimalist Apple-inspired examination platform for JUPEB, UNIBEN, and JAMB projectile motion physics tests with strict proctoring, 40s question timer, scientific calculator, and performance analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
