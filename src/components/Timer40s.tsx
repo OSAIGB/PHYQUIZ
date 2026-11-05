@@ -84,7 +84,7 @@ export const Timer40s: React.FC<Timer40sProps> = ({
         {/* Center Countdown Digit */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span
-            className={`font-mono text-xs font-semibold tabular-nums tracking-tight ${
+            className={`font-mono text-xs sm:text-sm font-bold tabular-nums tracking-tight ${
               isUrgent ? 'text-[#ff453a] animate-pulse' : 'text-white'
             }`}
           >

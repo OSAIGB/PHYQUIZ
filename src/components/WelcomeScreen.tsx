@@ -43,51 +43,51 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartExam }) => 
         </div>
 
         {/* 4 Protocol Directives Bento */}
-        <div className="grid grid-cols-2 gap-2 sm:gap-3.5">
-          <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 space-y-1 sm:space-y-1.5">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5">
+          <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 space-y-1 sm:space-y-1.5">
             <div className="flex items-center gap-2 text-white">
-              <Clock className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider truncate">
+              <Clock className="w-4 h-4 text-zinc-400 shrink-0" />
+              <span className="text-xs sm:text-xs font-semibold uppercase tracking-wider truncate">
                 40s Per Question
               </span>
             </div>
-            <p className="text-[10px] sm:text-xs text-zinc-400 leading-tight sm:leading-relaxed">
+            <p className="text-xs sm:text-xs text-zinc-400 leading-normal sm:leading-relaxed">
               Auto-advances when timer lapses.
             </p>
           </div>
 
-          <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 space-y-1 sm:space-y-1.5">
+          <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 space-y-1 sm:space-y-1.5">
             <div className="flex items-center gap-2 text-white">
-              <Lock className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider truncate">
-                Locked Screen
+              <Lock className="w-4 h-4 text-zinc-400 shrink-0" />
+              <span className="text-xs sm:text-xs font-semibold uppercase tracking-wider truncate">
+                Anti-Copy Guard
               </span>
             </div>
-            <p className="text-[10px] sm:text-xs text-zinc-400 leading-tight sm:leading-relaxed">
-              No screen exit or copying permitted.
+            <p className="text-xs sm:text-xs text-zinc-400 leading-normal sm:leading-relaxed">
+              Text selection & copying disabled.
             </p>
           </div>
 
-          <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 space-y-1 sm:space-y-1.5">
+          <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 space-y-1 sm:space-y-1.5">
             <div className="flex items-center gap-2 text-white">
-              <Calculator className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider truncate">
+              <Calculator className="w-4 h-4 text-zinc-400 shrink-0" />
+              <span className="text-xs sm:text-xs font-semibold uppercase tracking-wider truncate">
                 Calculator (C)
               </span>
             </div>
-            <p className="text-[10px] sm:text-xs text-zinc-400 leading-tight sm:leading-relaxed">
+            <p className="text-xs sm:text-xs text-zinc-400 leading-normal sm:leading-relaxed">
               Trig & physics constants included.
             </p>
           </div>
 
-          <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 space-y-1 sm:space-y-1.5">
+          <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 space-y-1 sm:space-y-1.5">
             <div className="flex items-center gap-2 text-white">
-              <ShieldCheck className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider truncate">
+              <ShieldCheck className="w-4 h-4 text-zinc-400 shrink-0" />
+              <span className="text-xs sm:text-xs font-semibold uppercase tracking-wider truncate">
                 Instant Feedback
               </span>
             </div>
-            <p className="text-[10px] sm:text-xs text-zinc-400 leading-tight sm:leading-relaxed">
+            <p className="text-xs sm:text-xs text-zinc-400 leading-normal sm:leading-relaxed">
               Immediate score & recommendations.
             </p>
           </div>
@@ -96,14 +96,14 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartExam }) => 
         {/* Action Button - No name or candidate id inputs */}
         <div className="bg-[#121214] border border-white/10 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <div className="text-[11px] sm:text-xs text-zinc-400 text-center sm:text-left">
-            Ready to test your knowledge? Mode is locked upon launch.
+            Ready to test your knowledge? Question 01 timer begins immediately.
           </div>
 
           <button
             onClick={onStartExam}
             className="w-full sm:w-auto px-8 py-3.5 bg-white text-black hover:bg-zinc-200 font-semibold text-xs tracking-wider uppercase rounded-xl transition-all duration-150 flex items-center justify-center gap-2 shadow-xl shrink-0 active:scale-95"
           >
-            <span>Begin Proctored Exam</span>
+            <span>Begin Exam</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

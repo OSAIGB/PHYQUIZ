@@ -53,34 +53,34 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
   return (
     <div className="bg-[#121214] border border-white/10 rounded-2xl sm:rounded-3xl p-3.5 sm:p-8 shadow-2xl relative flex flex-col justify-between h-full select-none overflow-hidden">
-      {/* Question Header & Metadata - Ultra compact on mobile */}
+      {/* Question Header & Metadata */}
       <div className="flex items-center justify-between gap-2 pb-2 sm:pb-4 border-b border-white/5 shrink-0">
-        <div className="flex items-center gap-2 text-[10px] sm:text-xs text-zinc-400 truncate">
+        <div className="flex items-center gap-2 text-xs sm:text-xs text-zinc-400 truncate">
           <span className="font-semibold text-white tracking-wide truncate">{question.source}</span>
           <span aria-hidden="true" className="text-zinc-700">·</span>
           <span className="truncate">{question.topic}</span>
         </div>
-        <div className="text-[10px] sm:text-xs font-mono text-zinc-400 shrink-0 hidden xs:block">
+        <div className="text-xs font-mono text-zinc-400 shrink-0 hidden xs:block">
           {question.formula}
         </div>
       </div>
 
-      {/* Main Question Text - Fluid font size to fit on mobile without scrolling */}
+      {/* Main Question Text - Bigger and legible on mobile */}
       <div className="py-2.5 sm:py-5 flex-1 min-h-0 flex items-center">
-        <h2 className="text-sm sm:text-lg md:text-xl font-normal sm:font-medium tracking-tight text-white leading-snug sm:leading-relaxed text-balance">
+        <h2 className="text-base sm:text-xl font-medium tracking-tight text-white leading-snug sm:leading-relaxed text-balance">
           {question.prompt}
         </h2>
       </div>
 
-      {/* 4 Options Grid - Space optimized for mobile zero-scroll */}
-      <div className="space-y-1.5 sm:space-y-3 py-1 sm:py-3 shrink-0">
+      {/* 4 Options Grid - Bigger text and comfortable touch targets on mobile */}
+      <div className="space-y-2 sm:space-y-3 py-1 sm:py-3 shrink-0">
         {question.options.map((option) => {
           const isSelected = selectedAnswer === option.label;
           const isCorrect = option.label === question.correctAnswer;
           const isWrong = isSelected && !isCorrect;
 
-          let optionStyle = 'bg-[#18181b]/80 hover:bg-[#202023] border-white/5 text-zinc-300';
-          let letterStyle = 'bg-black/50 text-zinc-400 border-white/10';
+          let optionStyle = 'bg-[#18181b]/80 hover:bg-[#202023] border-white/5 text-zinc-200';
+          let letterStyle = 'bg-black/50 text-zinc-300 border-white/10';
           let popAnimation = '';
 
           if (hasAnswered) {
@@ -103,16 +103,16 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             <button
               key={option.label}
               onClick={() => handleOptionClick(option.label)}
-              className={`w-full text-left p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group active:scale-[0.98] ${optionStyle} ${popAnimation}`}
+              className={`w-full text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-center justify-between group active:scale-[0.98] ${optionStyle} ${popAnimation}`}
             >
-              <div className="flex items-center gap-2.5 sm:gap-4 min-w-0 flex-1">
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
                 {/* Key Label circle */}
                 <div
-                  className={`w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl font-mono text-[11px] sm:text-xs font-semibold flex items-center justify-center border shrink-0 transition-all ${letterStyle}`}
+                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl font-mono text-xs sm:text-xs font-bold flex items-center justify-center border shrink-0 transition-all ${letterStyle}`}
                 >
                   {option.label}
                 </div>
-                <span className="text-xs sm:text-base font-normal tracking-tight truncate sm:whitespace-normal">
+                <span className="text-sm sm:text-base font-medium tracking-tight truncate sm:whitespace-normal">
                   {option.text}
                 </span>
               </div>
@@ -138,7 +138,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       {/* Immediate Pop Feedback Message (if wrong or correct option selected) */}
       {hasAnswered && (
         <div
-          className={`py-1.5 px-3 rounded-lg text-[11px] sm:text-xs font-medium flex items-center justify-between gap-2 shrink-0 animate-pop my-1 ${
+          className={`py-2 px-3.5 rounded-lg text-xs sm:text-xs font-medium flex items-center justify-between gap-2 shrink-0 animate-pop my-1 ${
             isSelectedWrong
               ? 'bg-red-500/15 border border-red-500/30 text-red-300'
               : 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-300'

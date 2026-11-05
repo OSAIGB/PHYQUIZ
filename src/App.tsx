@@ -47,7 +47,7 @@ export default function App() {
   }, [stage]);
 
   // Start Exam (no candidate ID or full name required)
-  const handleStartExam = async () => {
+  const handleStartExam = () => {
     setAnswers({});
     setTimeSpentPerQuestion({});
     setTimedOutQuestions([]);
@@ -57,15 +57,6 @@ export default function App() {
     const now = Date.now();
     startTimeRef.current = now;
     questionStartTimeRef.current = now;
-
-    // Request fullscreen for proctored mode
-    try {
-      if (document.documentElement.requestFullscreen) {
-        await document.documentElement.requestFullscreen();
-      }
-    } catch {
-      // Browser might restrict if user gesture rules apply, continues securely
-    }
 
     setStage('exam');
   };
@@ -94,11 +85,6 @@ export default function App() {
     setStage('submitted');
     setIsCalculatorOpen(false);
     setShowMobileDashboard(false);
-
-    // Exit fullscreen cleanly
-    if (document.fullscreenElement && document.exitFullscreen) {
-      document.exitFullscreen().catch(() => {});
-    }
   }, [
     currentQuestionIndex,
     timeSpentPerQuestion,
@@ -218,15 +204,15 @@ export default function App() {
               {/* Question Pacing Bar with 40s Circular Timer */}
               <div className="bg-[#121214] border border-white/10 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-1.5 sm:py-2.5 flex items-center justify-between shadow-lg shrink-0">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="text-xs font-mono text-zinc-400">
-                    <span className="text-white font-bold text-xs sm:text-sm">
+                  <div className="text-xs sm:text-xs font-mono text-zinc-400">
+                    <span className="text-white font-bold text-sm sm:text-base">
                       Question {String(currentQuestion.id).padStart(2, '0')}
                     </span>
                     <span className="text-zinc-600 mx-1">/</span>
                     <span>20</span>
                   </div>
                   <span className="text-zinc-700 hidden sm:inline">|</span>
-                  <span className="text-[11px] sm:text-xs text-zinc-400 hidden xs:inline">
+                  <span className="text-xs sm:text-xs text-zinc-400 hidden xs:inline">
                     {currentQuestion.section}
                   </span>
                 </div>

@@ -27,7 +27,7 @@ export const ExamHeader: React.FC<ExamHeaderProps> = ({
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-6">
         {/* Zone 1: Brand wordmark */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          <span className="text-sm sm:text-base font-semibold tracking-tight text-white whitespace-nowrap">
+          <span className="text-base sm:text-base font-semibold tracking-tight text-white whitespace-nowrap">
             Apex Physics
           </span>
           <span className="hidden sm:inline-block text-zinc-600">/</span>
@@ -36,13 +36,13 @@ export const ExamHeader: React.FC<ExamHeaderProps> = ({
           </span>
         </div>
 
-        {/* Zone 2: Question counter & Section (compact on mobile) */}
-        <div className="flex items-center gap-2 sm:gap-3 text-xs text-zinc-400 whitespace-nowrap">
-          <span className="font-mono text-white font-semibold text-xs sm:text-sm">
+        {/* Zone 2: Question counter & Section */}
+        <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-xs text-zinc-400 whitespace-nowrap">
+          <span className="font-mono text-white font-bold text-sm sm:text-base tracking-tight">
             Q{String(currentQuestionIndex + 1).padStart(2, '0')}/{totalQuestions}
           </span>
           <span aria-hidden="true" className="text-zinc-700 hidden sm:inline">·</span>
-          <span className="text-zinc-400 font-medium hidden md:inline truncate max-w-[180px]">
+          <span className="text-zinc-300 font-medium hidden md:inline truncate max-w-[180px]">
             {sectionName}
           </span>
           {infractionsCount > 0 && (

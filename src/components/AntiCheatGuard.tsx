@@ -104,7 +104,7 @@ export const AntiCheatGuard: React.FC<AntiCheatGuardProps> = ({
     };
   }, [isActive, showSecurityToast]);
 
-  // Fullscreen & Screen Focus Monitors
+  // Tab & Focus Monitor
   useEffect(() => {
     if (!isActive) return;
 
@@ -120,36 +120,21 @@ export const AntiCheatGuard: React.FC<AntiCheatGuardProps> = ({
         if (!document.hasFocus()) {
           triggerInfraction('blur', 'Lost focus from the exam window.');
         }
-      }, 300);
+      }, 400);
       return () => clearTimeout(timeout);
-    };
-
-    const handleFullscreenChange = () => {
-      if (!document.fullscreenElement) {
-        triggerInfraction('fullscreen_exit', 'Exited fullscreen examination environment.');
-      }
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('blur', handleWindowBlur);
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('blur', handleWindowBlur);
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
     };
   }, [isActive, triggerInfraction]);
 
-  const handleReturnToExam = async () => {
+  const handleReturnToExam = () => {
     setShowWarningModal(false);
-    try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
-      }
-    } catch {
-      // Ignore if user denies fullscreen browser permission
-    }
   };
 
   return (
@@ -185,7 +170,7 @@ export const AntiCheatGuard: React.FC<AntiCheatGuardProps> = ({
             </div>
 
             <p className="text-[11px] text-zinc-500 text-left">
-              Leaving the examination window or exiting fullscreen is prohibited. At strike {maxInfractions}, your test will be immediately submitted.
+              Leaving the examination window or switching tabs is prohibited. At strike {maxInfractions}, your test will be immediately submitted.
             </p>
 
             <div className="flex gap-2.5 pt-2">
@@ -193,8 +178,7 @@ export const AntiCheatGuard: React.FC<AntiCheatGuardProps> = ({
                 onClick={handleReturnToExam}
                 className="flex-1 py-2.5 bg-white text-black hover:bg-zinc-200 rounded-xl text-xs font-semibold tracking-wide transition-colors flex items-center justify-center gap-1.5"
               >
-                <Maximize2 className="w-3.5 h-3.5" />
-                Resume Secure Exam
+                Resume Exam
               </button>
               <button
                 onClick={() => onForceSubmit('Candidate surrendered exam session.')}
